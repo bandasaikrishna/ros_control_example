@@ -1,0 +1,17 @@
+single_joint_actuator:
+    # Publish all joint states -----------------------------------
+    joints_update:
+      type: joint_state_controller/JointStateController
+      publish_rate: 50
+    
+    # Position Controllers ---------------------------------------
+    joint1_position_controller:
+      type: effort_controllers/JointPositionController
+      joint: joint1
+      pid: {p: 1300.0, i: 0.0, d: 5, i_clamp_min: -130.0, i_clamp_max: 130, antiwindup: True}
+      
+    # Velocity Controllers ---------------------------------------
+    joint1_velocity_controller:
+      type: effort_controllers/JointVelocityController
+      joint: joint1
+      pid: {p: 100.0, i: 100.0, d: 0.0, i_clamp_min: -255.0, i_clamp_max: 255, antiwindup: True}

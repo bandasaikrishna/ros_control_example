@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="model" default="$(find ros_control_example)/urdf/single_joint_actuator.urdf.xacro"/>
+  <arg name="gui" default="true" />
+  
+
+
+  <param name="robot_description" command="$(find xacro)/xacro.py $(arg model)" />
+  <param name="use_gui" value="$(arg gui)"/>
+
+ 
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" >
+  </node>
+  <!--<node name="Joints_to_aurdino" pkg="six_dof_spatial_manipulator" type="publish_joints_to_arudino.py" output="screen"/> -->
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" /> 
+  
+  <node name="rviz" pkg="rviz" type="rviz"/> 
+</launch>
