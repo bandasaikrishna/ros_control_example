@@ -48,23 +48,23 @@ If you have more joints then,
     joint_name_= "joint2"
     
 // Create joint state interface
-    hardware_interface::JointStateHandle jointStateHandle(joint_name_, &joint_position_2, &joint_velocity_2, &joint_effort_2);
+    hardware_interface::JointStateHandle jointStateHandle2(joint_name_, &joint_position_2, &joint_velocity_2, &joint_effort_2);
     joint_state_interface_.registerHandle(jointStateHandle);
 
 //create the position/velocity/effort interface according to your actuator 
-    hardware_interface::JointHandle jointPositionHandle(jointStateHandle, &joint_position_command_2);
-    position_joint_interface_.registerHandle(jointPositionHandle);
+    hardware_interface::JointHandle jointPositionHandle2(jointStateHandle2, &joint_position_command_2);
+    position_joint_interface_.registerHandle(jointPositionHandle2);
     
-    hardware_interface::JointHandle jointVelocityHandle(jointStateHandle, &joint_velocity_command_2);
-    effort_joint_interface_.registerHandle(jointVelocityHandle);
+    hardware_interface::JointHandle jointVelocityHandle2(jointStateHandle2, &joint_velocity_command_2);
+    effort_joint_interface_.registerHandle(jointVelocityHandle2);
     
-    hardware_interface::JointHandle jointEffortHandle(jointStateHandle, &joint_effort_command_2);
-	effort_joint_interface_.registerHandle(jointEffortHandle);
+    hardware_interface::JointHandle jointEffortHandle2(jointStateHandle2, &joint_effort_command_2);
+	effort_joint_interface_.registerHandle(jointEffortHandle2);
 	
 //create joint limit interface.
     joint_limits_interface::getJointLimits("joint2", nh_, limits);
-	joint_limits_interface::EffortJointSaturationHandle jointLimitsHandle(jointEffortHandle, limits);
-	effortJointSaturationInterface.registerHandle(jointLimitsHandle);
+	joint_limits_interface::EffortJointSaturationHandle jointLimitsHandle2(jointEffortHandle2, limits);
+	effortJointSaturationInterface.registerHandle(jointLimitsHandle2);
 	
 	Repeat same for other joints
 */
