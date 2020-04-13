@@ -135,6 +135,6 @@ int main(int argc, char** argv)
     ROBOTHardwareInterface ROBOT(nh);
     //spinner.start();
     spinner.spin();
-    ros::spin();
+    //ros::spin();
     return 0;
 }
