@@ -130,9 +130,11 @@ int main(int argc, char** argv)
 {
     ros::init(argc, argv, "single_joint_hardware_interface");
     ros::NodeHandle nh;
-    ros::AsyncSpinner spinner(4); // 2 threads for controller service and for the Service client used to get the feedback from ardiuno
-    spinner.start();
+    //ros::AsyncSpinner spinner(4);  
+    ros::MultiThreadedSpinner spinner(4); // Multiple threads for controller service callback and for the Service client callback used to get the feedback from ardiuno
     ROBOTHardwareInterface ROBOT(nh);
+    //spinner.start();
+    spinner.spin();
     ros::spin();
     return 0;
 }
